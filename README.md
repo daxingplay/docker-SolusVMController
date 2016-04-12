@@ -1,2 +1,3 @@
 # docker-SolusVMController
-SolusVMController docker image
+
+unofficial [SolusVMController](https://github.com/seikan/SolusVMController) docker image
