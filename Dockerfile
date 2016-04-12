@@ -18,7 +18,7 @@ RUN curl -sSL https://github.com/seikan/SolusVMController/archive/${VERSION}.tar
     mv /srv/configuration.php.default /srv/configuration.php
 
 # cleanup
-RUN apk del curl && rm -rf /var/cache/apk/*
+RUN rm -rf /var/cache/apk/*
 
 ENV TERM="xterm" \
     DB_HOST="172.17.0.1" \
