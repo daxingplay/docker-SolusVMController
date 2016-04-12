@@ -12,7 +12,8 @@ RUN apk update \
     php-intl php-bcmath php-dom php-xmlreader mysql-client && apk add -u musl
 
 # download SolusVMController
-RUN curl -sSL https://github.com/seikan/SolusVMController/archive/$VERSION.tar.gz | tar xfz - -C /srv && \
+RUN mkdir /srv && \
+    curl -sSL https://github.com/seikan/SolusVMController/archive/$VERSION.tar.gz | tar xfz - -C /srv && \
     chown -R nginx:www-data /srv/ && \
     mv /srv/configuration.php.default /srv/configuration.php
 
