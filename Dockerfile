@@ -1,7 +1,7 @@
 FROM alpine:3.3
 MAINTAINER daxingplay <daxingplay@gmail.com>
 
-ENV VERSION="3.3"
+ENV VERSION=3.3
 
 RUN apk update \
     && apk add bash curl tar gzip nginx ca-certificates \
@@ -13,7 +13,7 @@ RUN apk update \
 
 # download SolusVMController
 RUN mkdir /srv && \
-    curl -sSL https://github.com/seikan/SolusVMController/archive/$VERSION.tar.gz | tar xfz - -C /srv && \
+    curl -sSL https://github.com/seikan/SolusVMController/archive/${VERSION}.tar.gz | tar xfz - -C /srv && \
     chown -R nginx:www-data /srv/ && \
     mv /srv/configuration.php.default /srv/configuration.php
 
