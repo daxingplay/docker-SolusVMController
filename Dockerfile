@@ -10,8 +10,13 @@ RUN apk update \
     php-gd php-iconv php-mcrypt \
     php-mysql php-curl php-opcache php-ctype php-apcu \
     php-intl php-bcmath php-dom php-xmlreader mysql-client && apk add -u musl
-RUN curl -sSL https://github.com/seikan/SolusVMController/archive/$VERSION.tar.gz | tar xz -C /srv
-RUN chown -R nginx:www-data /srv/
+
+# download SolusVMController
+RUN curl -sSL https://github.com/seikan/SolusVMController/archive/$VERSION.tar.gz | tar xfz - -C /srv && \
+    chown -R nginx:www-data /srv/ && \
+    mv /srv/configuration.php.default /srv/configuration.php
+
+# cleanup
 RUN apk del curl && rm -rf /var/cache/apk/*
 
 ENV TERM="xterm" \
