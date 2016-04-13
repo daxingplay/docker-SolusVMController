@@ -15,7 +15,8 @@ RUN apk update \
 RUN curl -sSL https://github.com/seikan/SolusVMController/archive/${VERSION}.tar.gz | tar xfz - -C / && \
     mv SolusVMController-${VERSION} srv && \
     chown -R nginx:www-data /srv/ && \
-    mv /srv/configuration.php.default /srv/configuration.php
+    rm -f /srv/configuration.php.default && \
+    rm -f /srv/setup.php
 
 # cleanup
 RUN rm -rf /var/cache/apk/*
